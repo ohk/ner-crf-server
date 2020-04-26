@@ -1,0 +1,38 @@
+{
+    "name": "ner-crf-server",
+    "version": "1.0.0",
+    "description": "Based on https://nlp.stanford.edu/software/CRF-NER.html",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ohkamisli/ner-crf-server.git"
+    },
+    "keywords": [
+        "stanford",
+        "ner",
+        "crf",
+        "server",
+        "api"
+    ],
+    "author": "Omer Hamid Kamisli",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/ohkamisli/ner-crf-server/issues"
+    },
+    "homepage": "https://github.com/ohkamisli/ner-crf-server#readme",
+    "dependencies": {
+        "fs-extra": "^9.0.0",
+        "shelljs": "^0.8.3",
+        "terminate": "^2.1.2",
+        "underscore": "^1.10.2"
+    },
+    "files": [
+        "/ner/*"
+    ],
+    "devDependencies": {
+        "sleep": "^6.1.0"
+    }
+}
