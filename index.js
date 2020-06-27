@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const shell = require('shelljs')
 const { spawn, exec } = require('child_process')
 const net = require('net')
-const tsvParser = require('./tsvParser')
+const tsvParser = require('./ner/tsvParser')
 const terminate = require('terminate')
 
 class Server {
@@ -43,7 +43,7 @@ class Server {
      * @return {Object} exec info
      */
     start() {
-        let command = `java -Xmx8g -Xms1024m-cp "${this.nerPath}:${this.libPath}" edu.stanford.nlp.ie.NERServer  -loadClassifier ${this.classifier}.ser.gz -port ${this.port} -tokenizerFactory edu.stanford.nlp.process.WhitespaceTokenizer -tokenizerOptions tokenizeNLs=false -outputFormat tsv`
+        let command = `java -Xmx8g -Xms1024m -cp "${this.nerPath}:${this.libPath}" edu.stanford.nlp.ie.NERServer  -loadClassifier ${this.classifier} -port ${this.port} -tokenizerFactory edu.stanford.nlp.process.WhitespaceTokenizer -tokenizerOptions tokenizeNLs=false -outputFormat tsv`
         console.log(`NER Server started on port ${this.port}`)
         const process = exec(command, { shell: true })
         this.process = process
