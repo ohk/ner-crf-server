@@ -25,7 +25,6 @@ class Server {
             var str = data.toString()
             var res = {}
             res.tags = tsvParser(str)
-            console.log(res.tags)
 
             socket.destroy()
             callback(undefined, res)
@@ -62,6 +61,11 @@ class Server {
                 console.log('Server closed!')
             }
         })
+    }
+
+    setClassifier(classifier) {
+        this.classifier = classifier
+        return this.classifier
     }
     /**
      * Constructor function.
@@ -119,6 +123,9 @@ class Classifier {
     }
 
     constructor(trainFileName, modelName, options) {
+        if (options === undefined) {
+            options = {}
+        }
         let maxLeftV = options.maxLeft !== undefined ? options.maxLeft : 1
         let useClassFeatureV = options.useClassFeature !== undefined ? options.useClassFeature : true
         let useWordV = options.useWord !== undefined ? options.useWord : true
